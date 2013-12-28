@@ -17,13 +17,22 @@ if (!empty($_POST)) {
 		case 'register':
 			if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmation']) && isset($_POST['email']) 
 			&& ($_POST['password'] == $_POST['confirmation'])
-			&& filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-				$user = (object)array('username' => $_POST['username'], 'password' => $_POST['password'], 'email' => $_POST['email'], 'registerDate' => date('Y-m-d H:i:s', time()));
-				$user->userId = db_insert('users', (array)$user, true);
+			&& filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
+			&& strlen($_POST['username'] > 3)
+			&& strlen($_POST['password'] > 4)) {
+				$user = (object)array(
+					'username' => $_POST['username'], 
+					'password' => $_POST['password'], 
+					'email' => $_POST['email'], 
+					'registerDate' => date('Y-m-d H:i:s', time()),
+					'displayName' => $_POST['username']
+				);
+
+				$user->userId = UserApplication::register($user);
 				user_remember($user);
+
 				$_SESSION['user'] = $user;
-				$_SESSION['new_user'] = true;
-				$_SESSION['display_welcome'] = true;
+				$_SESSION['new_user'] = $_SESSION['display_welcome'] = true;
 				header('Location: /');
 			} else {
 				echo '<div class="alert-box alert radius">Please double check the information provided below.</div>';
@@ -35,13 +44,6 @@ if (!empty($_POST)) {
 
 <?php if ($method == 'login'): ?>
 	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) return;
-js = d.createElement(s); js.id = id;
-js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=206268974871";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 	<h1>Login</h1>
 	<div class="content panel">
 		<form method="POST" action="?method=<?php echo $method; ?>">
@@ -57,7 +59,7 @@ fjs.parentNode.insertBefore(js, fjs);
 					</div>
 					<div class="row">
 						<div class="show-for-medium-up medium-4 column">
-							<input type="checkbox" name="remember" />&nbsp;<small>Remember&nbsp;Me</small>
+							<input type="checkbox" name="remember" checked />&nbsp;<small>Remember&nbsp;Me</small>
 						</div>
 						<div class="small-12 medium-8 column">
 							<div class="right">
@@ -69,6 +71,13 @@ fjs.parentNode.insertBefore(js, fjs);
 				</div>
 				<div class="show-for-medium-up medium-4 column">
 					<h6>External Services</h6>
+					<script>(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=206268974871";
+					fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
 					<div class="fb-login-button" data-width="201" data-height="24" data-max-rows="1" data-show-faces="false">Sign in with Facebook</div>
 					<div style="margin-top: 5px;">
 						<img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-gray.png" />
@@ -84,11 +93,11 @@ fjs.parentNode.insertBefore(js, fjs);
 			<div class="row">
 				<div class="small-12 medium-8 column">
 					<div class="small-12">
-						<label>Username</label>
+						<label>Username <small>(At least 4 characters; no spaces)</small></label>
 						<input type="text" name="username" value="<?php echo @$_POST['username']; ?>" required />
 					</div>
 					<div class="small-12">
-						<label>Password</label>
+						<label>Password <small>(At least 5 characters)</small></label>
 						<input type="password" name="password" required />
 					</div>
 					<div class="small-12">
@@ -108,10 +117,10 @@ fjs.parentNode.insertBefore(js, fjs);
 					<p>
 						Sign up for Pro Membership today ($5.00/month) and recieve the following: 
 						<ul>
-							<li>Unlimtied Leagues</li>
+							<li>Join Unlimtied Leagues</li>
 							<li>Exclusive Features</li>
+							<li>League History</li>
 							<li>Bonus Points</li>
-							<li>User Messaging</li>
 							<li><a href="#">Read More!</a></li>
 						</ul>
 						<a href="?method=gopro" class="right button alert tiny">Go Pro!</a>

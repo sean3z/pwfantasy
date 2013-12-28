@@ -13,7 +13,7 @@
 					<li><a href="user.php?method=notifications" class="button radius alert"><?php echo $user->notifications; ?></a></li>
 				<?php endif; ?>
 				<li class="has-dropdown">
-					<a href="profile.php?userId=<?php echo $user->userId; ?>"><?php echo $user->username; ?></a>
+					<a href="profile.php?userId=<?php echo $user->userId; ?>"><?php echo $user->displayName; ?></a>
 					<ul class="dropdown">
 						<li><a href="leagues.php?method=myleagues">My Leagues</a></li>
 						<li><a href="profile.php?userId=<?php echo $user->userId; ?>">Profile</a></li>

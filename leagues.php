@@ -24,7 +24,7 @@ $method = (isset($_GET['method']) && !empty($_GET['method'])) ? $_GET['method'] 
 	</table>
 
 <?php elseif ($method == 'myleagues'): ?>
-	<?php if (user_is_logged_in()): ?>
+	<?php if (require_login('leagues.php?method=myleagues')): ?>
 		<h1>My Leagues</h1>
 		<p><a href="?method=create" class="button tiny right">Create League</a>Below are a list of leagues you've joined for the current season.</p>
 		<table class="small-12">
@@ -40,9 +40,7 @@ $method = (isset($_GET['method']) && !empty($_GET['method'])) ? $_GET['method'] 
 				?>
 			</tbody>
 		</table>
-	<?php 
-		else: require_login('leagues.php?method=myleagues'); endif;
-	?>
+	<?php endif; ?>
 <?php elseif ($method == 'leagues'): ?>
 	<h1>Leagues</h1>
 	<p><a href="?method=create" class="button tiny right">Create League</a>Below are a list of all current leagues. You can join an existing one or create your own.</p>
