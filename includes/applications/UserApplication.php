@@ -24,4 +24,15 @@ class UserApplication {
 		if ($hash === NULL) db_query('UPDATE users SET session = NULL WHERE userId = %d', $userId);
 		else db_query('UPDATE users SET session = "%s" WHERE userId = %d', $hash, $userId);
 	}
+
+	static function getDisplayNameByUserId($userId) {
+		static $users = array();
+
+		if (!isset($users[$userId])) {
+			$query = db_query('SELECT displayName FROM users WHERE userId = %d', $userId)->fetch_object();
+			if (isset($query->displayName)) $users[$userId] = $query->displayName;
+		} 
+
+		return $users[$userId];
+	}
 }

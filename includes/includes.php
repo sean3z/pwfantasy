@@ -15,5 +15,5 @@ foreach (glob('includes/applications/*.php') as $file) include $file;
 
 include 'session.php';
 
-// define('ASSETS_PATH', '//cdn.pwfantasy.com/');
-define('ASSETS_PATH', '/fw/assets/');
+define('ASSETS_PATH', '//cdn.pwfantasy.com/');
+// define('ASSETS_PATH', '/assets/');

@@ -26,3 +26,4 @@
 <?php
 
 ob_flush();
+$mysqli->close();

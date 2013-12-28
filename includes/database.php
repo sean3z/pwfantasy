@@ -72,12 +72,14 @@ function db_encode_blob($data) {
 }
 
 function _db_query($query, $id = false) {
-	$mysqli = db_connect();
+	global $mysqli;
 	if ($result = $mysqli->query($query)) {
 		if ($id) $result = $mysqli->insert_id;
-		$mysqli->close();
+		// $mysqli->close();
 		return $result;
 	} else {
 		die(sprintf('MySQL Error: %s', $mysqli->error));
 	}
 }
+
+$mysqli = db_connect();
