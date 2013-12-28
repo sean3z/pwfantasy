@@ -7,7 +7,7 @@
 		</thead>
 		<tbody>
 			<?php 
-				$leagues = LeagueApplication::getLeaguesByUserIdSeason($user->userId);
+				$leagues = LeagueApplication::getLeaguesByUserIdSeason($user->userId, 0);
 				foreach($leagues as $league) {
 					echo '<tr><td><a href="game/dashboard.php?leagueId=', $league->leagueId ,'">', $league->leagueName ,'</a></td><td>', $league->type ,'</td><td>', $league->draftType,'</td><td>', $league->players,'/', $league->maxPlayers,'</td><td>', date('M d, Y', strtotime($league->created)) ,'</td></tr>';
 				}
