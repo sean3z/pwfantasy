@@ -8,10 +8,11 @@ class LeagueApplication {
 		return $leagues;
 	}
 
-	static function getLeaguesByUserId($userId) {
+	static function getLeaguesByUserId($userId, $season =  0) {
+		if ($season < 1) $season = SeasonApplication::getCurrentSeason();
 		if ((int)$userId > 0) {
 			$leagues = array();
-			$query = sprintf('SELECT l.* FROM leagueplayers p LEFT JOIN leagues l USING(leagueId) WHERE (p.player1 = %d OR p.player2 = %1$d OR p.player3 = %1$d OR p.player4 = %1$d OR p.player5 = %1$d OR p.player6 = %1$d OR p.player7 = %1$d OR p.player8 = %1$d) OR l.userId = %1$d LIMIT 15', $userId);
+			$query = sprintf('SELECT l.* FROM leagueplayers p LEFT JOIN leagues l USING(leagueId) WHERE (p.player1 = %d OR p.player2 = %1$d OR p.player3 = %1$d OR p.player4 = %1$d OR p.player5 = %1$d OR p.player6 = %1$d OR p.player7 = %1$d OR p.player8 = %1$d) OR l.userId = %1$d AND l.season = %d LIMIT 15', $userId, $season);
 			$query = db_query($query);
 			while($league = $query->fetch_object()) $leagues[] = $league;
 			return $leagues;
