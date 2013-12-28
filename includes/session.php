@@ -25,10 +25,6 @@ function user_login($username, $password) {
  	return false;
 }
 
-function build_user(&$user) {
-	$user->notifications = 0;
-}
-
 function user_logout(&$user) {
 	session_destroy();
 	UserApplication::updateUserSession($user->userId, NULL);
@@ -54,4 +50,10 @@ function remember_user(&$user) {
 function require_login($destination) {
 	if (user_is_logged_in()) return true;
 	else header('Location: user.php?method=login&destination='. urlencode($destination));
+}
+
+function user_doesnt_exist($username, $email) {
+	$query = db_query('SELECT userId FROM users WHERE username = "%s" or email = "%s"', $username, $email)->fetch_object();
+	if (isset($query->userId)) return false; // user does exist!
+	return true;
 }

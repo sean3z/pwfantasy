@@ -18,22 +18,28 @@ if (!empty($_POST)) {
 			if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmation']) && isset($_POST['email']) 
 			&& ($_POST['password'] == $_POST['confirmation'])
 			&& filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
-			&& strlen($_POST['username'] > 3)
-			&& strlen($_POST['password'] > 4)) {
-				$user = (object)array(
-					'username' => $_POST['username'], 
-					'password' => $_POST['password'], 
-					'email' => $_POST['email'], 
-					'registerDate' => date('Y-m-d H:i:s', time()),
-					'displayName' => $_POST['username']
-				);
+			&& strlen($_POST['username']) > 3
+			&& strlen($_POST['password'] )> 4) {
+				if (user_doesnt_exist($_POST['username'], $_POST['email'])) {
+					$user = (object)array(
+						'username' => $_POST['username'], 
+						'password' => $_POST['password'], 
+						'email' => $_POST['email'], 
+						'registerDate' => date('Y-m-d H:i:s', time()),
+						'displayName' => $_POST['username'],
+						'avatar' => 'http://www.gravatar.com/avatar/'. md5(strtolower(trim($_POST['email']))) .'.jpg?s=45&d=mm'
+					);
 
-				$user->userId = UserApplication::register($user);
-				user_remember($user);
+					$user->userId = UserApplication::register($user);
+					user_remember($user);
+					$user->notifications = 1;
 
-				$_SESSION['user'] = $user;
-				$_SESSION['new_user'] = $_SESSION['display_welcome'] = true;
-				header('Location: /');
+					$_SESSION['user'] = $user;
+					$_SESSION['new_user'] = $_SESSION['display_welcome'] = true;
+					header('Location: /');
+				} else {
+					echo '<div class="alert-box alert radius">The Username or Email provided already exists. If you\'ve forgotten your user credentials, please use <a href="?method=forgotpass">Forgot Password</a></div>';
+				}
 			} else {
 				echo '<div class="alert-box alert radius">Please double check the information provided below.</div>';
 			}

@@ -10,7 +10,9 @@ class UserApplication {
 
 	// required all non-null fields
 	static function register($user) {
-		return db_insert('users', (array)$user, true);
+		$userId = db_insert('users', (array)$user, true);
+		// insert welcome message notification
+		return $userId;
 	}
 
 	static function getUserBySession($hash) {
