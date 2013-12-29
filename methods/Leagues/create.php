@@ -10,7 +10,7 @@
 		<tr><td class="text-left">Teams in League</td><td>8</td><td>8</td></tr>
 		<tr><td class="text-left">League History</td><td></td><td><i class="fa fa-check"></i></td></tr>
 		<tr><td class="text-left">League Prize</td><td></td><td><i class="fa fa-check"></i></td></tr>
-		<tr><td class="text-left">Leaderboard Eligable</td><td></td><td><i class="fa fa-check"></i></td></tr>
+		<tr><td class="text-left">Leaderboard Eligible</td><td></td><td><i class="fa fa-check"></i></td></tr>
 		<tr><td class="text-left">Cost</td><td>100% FREE</td><td>Create League for Pricing</td></tr>
 		<tr><td></td><td><a class="button tiny" href="#">Create League</a></td><td><a class="button tiny alert" href="#">Create Pro League</a></td></tr>
 	</tbody>
