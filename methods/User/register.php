@@ -62,7 +62,7 @@ if (!empty($_POST)) {
 				<p>
 					Sign up for Pro Membership today ($5.00/month) and recieve the following: 
 					<ul>
-						<li>Join Unlimtied Leagues</li>
+						<li>Join Unlimited Leagues</li>
 						<li>Exclusive Features</li>
 						<li>League History</li>
 						<li>Bonus Points</li>
