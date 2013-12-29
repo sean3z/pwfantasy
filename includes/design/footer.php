@@ -2,11 +2,11 @@
 	<div class="medium-3 large-3 column show-for-medium-up">
 		<h5>Navigation</h5>
 		<ul class="side-nav">
-			<li><a href="leagues.php">Leagues</a></li>
-			<li><a href="rules.php">Rules</a></li>
-			<li><a href="faq.php">FAQ</a></li>
-			<li><a href="about.php">About</a></li>
-			<li><a href="contact.php">Contact</a></li>
+			<li><a href="/leagues.php">Leagues</a></li>
+			<li><a href="/rules.php">Rules</a></li>
+			<li><a href="/faq.php">FAQ</a></li>
+			<li><a href="/about.php">About</a></li>
+			<li><a href="/contact.php">Contact</a></li>
 			<li class="divider"></li>
 		</ul>
 		<?php if (!user_is_logged_in()): ?>

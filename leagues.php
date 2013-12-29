@@ -9,6 +9,8 @@ elseif ($method == 'myleagues'):
 	include 'methods/Leagues/myleagues.php';
 elseif ($method == 'leagues'):
 	include 'methods/Leagues/leagues.php'; 
+elseif ($method == 'joinleague'):
+	include 'methods/Leagues/joinleague.php';
 endif; 
 
 include 'includes/design/footer.php';

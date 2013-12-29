@@ -1,7 +1,7 @@
 <nav class="top-bar" data-topbar>
 	<ul class="title-area">
 		<li class="name">
-			<h1><a href="http://pwfantasy.com"><img src="<?php echo ASSETS_PATH; ?>img/pwfantasylogo.png" style="margin-top: -2px; margin-right: 10px;">PWFantasy</a></h1>
+			<h1><a href="/"><img src="<?php echo ASSETS_PATH; ?>img/pwfantasylogo.png" style="margin-top: -2px; margin-right: 10px;">PWFantasy</a></h1>
 		</li>
 	</ul>
 
