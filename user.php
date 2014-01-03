@@ -4,16 +4,16 @@ $method = (isset($_GET['method']) && !empty($_GET['method'])) ? $_GET['method'] 
 
 
 if ($method == 'login'): 
-	include 'methods/User/login.php';
+	include 'includes/methods/User/login.php';
 elseif ($method == 'register'): 
-	include 'methods/User/register.php';
+	include 'includes/methods/User/register.php';
 elseif ($method == 'logout'):
 	user_logout($user); 
 	header('Location: /');
 elseif ($method == 'forgotpass'):
-	include 'methods/User/forgotpass.php';
+	include 'includes/methods/User/forgotpass.php';
 elseif ($method == 'settings'):
-	include 'methods/User/settings.php';
+	include 'includes/methods/User/settings.php';
 endif;
 
 include 'includes/design/footer.php';
