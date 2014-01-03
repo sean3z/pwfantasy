@@ -6,3 +6,8 @@
 .row {
 	max-width: 80rem;
 }
+
+.button,
+ul, ol, dl {
+	margin-bottom: 0;
+}
