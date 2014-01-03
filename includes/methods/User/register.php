@@ -11,12 +11,12 @@ if (!empty($_POST)) {
 				'username' => $_POST['username'], 
 				'password' => $_POST['password'], 
 				'email' => $_POST['email'], 
-				'registerDate' => date('Y-m-d H:i:s', time()),
+				'registerDate' => date(MYSQL_DATETIME, time()),
 				'displayName' => $_POST['username'],
 				'avatar' => 'http://www.gravatar.com/avatar/'. md5(strtolower(trim($_POST['email']))) .'.jpg?s=45&d=mm'
 			);
 
-			$user->userId = UserApplication::register($user);
+			$user->userId = user_register($user);
 			user_remember($user);
 			$user->notifications = 1;
 

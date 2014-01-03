@@ -15,6 +15,7 @@ function user_is_logged_in() {
 
 function user_login($username, $password) {
 	global $user;
+	$username = UserApplication::sanitize($username);
 	$query = sprintf('SELECT userId FROM users WHERE (username = "%s" or email = "%1$s") and password = "%s"', db_escape_string($username), db_escape_string($password));
 	$query = db_query($query)->fetch_object();
 	// printf('<pre>%s</pre>', print_r($query,1));
@@ -23,6 +24,11 @@ function user_login($username, $password) {
 		return true;
 	}
  	return false;
+}
+
+function user_register($registrant) {
+	$registrant->username = UserApplication::sanitize($registrant->username);
+	return UserApplication::createUser((array)$registrant);
 }
 
 function user_logout(&$user) {
@@ -53,7 +59,7 @@ function require_login($destination) {
 }
 
 function user_doesnt_exist($username, $email) {
-	$query = db_query('SELECT userId FROM users WHERE username = "%s" or email = "%s"', $username, $email)->fetch_object();
+	$query = db_query('SELECT userId FROM users WHERE username = "%s" or email = "%s"', UserApplication::sanitize($username), $email)->fetch_object();
 	if (isset($query->userId)) return false; // user does exist!
 	return true;
 }

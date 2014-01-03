@@ -8,8 +8,8 @@ class UserApplication {
 	}
 
 	// required all non-null fields
-	static function register($user) {
-		$userId = db_insert('users', (array)$user, true);
+	static function createUser($registrant) {
+		$userId = db_insert('users', $registrant, true);
 		// insert welcome message notification
 		return $userId;
 	}
@@ -33,5 +33,9 @@ class UserApplication {
 		} 
 
 		return $users[$userId];
+	}
+
+	static function sanitize($string) {
+		return preg_replace('/[^\w\d]/i', '', $string);
 	}
 }
