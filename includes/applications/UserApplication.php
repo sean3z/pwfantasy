@@ -1,7 +1,6 @@
 <?php
 
 class UserApplication {
-	// requires $user->userId
 	static function getUserByUserId($userId) {
 		$user = db_query('SELECT * FROM users WHERE userId = %d', $userId)->fetch_object();
 		$user->notifications = 0;
