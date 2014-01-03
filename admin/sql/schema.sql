@@ -1,22 +1,24 @@
 /*
-Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
-Source Server         : local
-Source Server Version : 50527
-Source Host           : localhost:3306
-Source Database       : fw
+ Source Server         : local
+ Source Server Type    : MySQL
+ Source Server Version : 50615
+ Source Host           : localhost
+ Source Database       : fw
 
-Target Server Type    : MYSQL
-Target Server Version : 50527
-File Encoding         : 65001
+ Target Server Type    : MySQL
+ Target Server Version : 50615
+ File Encoding         : utf-8
 
-Date: 2014-01-03 12:16:08
+ Date: 01/03/2014 12:47:12 PM
 */
 
-SET FOREIGN_KEY_CHECKS=0;
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for `bonuses`
+--  Table structure for `bonuses`
 -- ----------------------------
 DROP TABLE IF EXISTS `bonuses`;
 CREATE TABLE `bonuses` (
@@ -34,7 +36,7 @@ CREATE TABLE `bonuses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `bonustypes`
+--  Table structure for `bonustypes`
 -- ----------------------------
 DROP TABLE IF EXISTS `bonustypes`;
 CREATE TABLE `bonustypes` (
@@ -46,7 +48,7 @@ CREATE TABLE `bonustypes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `championships`
+--  Table structure for `championships`
 -- ----------------------------
 DROP TABLE IF EXISTS `championships`;
 CREATE TABLE `championships` (
@@ -57,7 +59,7 @@ CREATE TABLE `championships` (
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `events`
+--  Table structure for `events`
 -- ----------------------------
 DROP TABLE IF EXISTS `events`;
 CREATE TABLE `events` (
@@ -79,7 +81,7 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `eventtypes`
+--  Table structure for `eventtypes`
 -- ----------------------------
 DROP TABLE IF EXISTS `eventtypes`;
 CREATE TABLE `eventtypes` (
@@ -91,7 +93,7 @@ CREATE TABLE `eventtypes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `factions`
+--  Table structure for `factions`
 -- ----------------------------
 DROP TABLE IF EXISTS `factions`;
 CREATE TABLE `factions` (
@@ -107,7 +109,7 @@ CREATE TABLE `factions` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `leagueplayers`
+--  Table structure for `leagueplayers`
 -- ----------------------------
 DROP TABLE IF EXISTS `leagueplayers`;
 CREATE TABLE `leagueplayers` (
@@ -124,7 +126,7 @@ CREATE TABLE `leagueplayers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `leagues`
+--  Table structure for `leagues`
 -- ----------------------------
 DROP TABLE IF EXISTS `leagues`;
 CREATE TABLE `leagues` (
@@ -142,7 +144,7 @@ CREATE TABLE `leagues` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
--- Table structure for `matchdecisions`
+--  Table structure for `matchdecisions`
 -- ----------------------------
 DROP TABLE IF EXISTS `matchdecisions`;
 CREATE TABLE `matchdecisions` (
@@ -154,7 +156,7 @@ CREATE TABLE `matchdecisions` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `matches`
+--  Table structure for `matches`
 -- ----------------------------
 DROP TABLE IF EXISTS `matches`;
 CREATE TABLE `matches` (
@@ -176,7 +178,7 @@ CREATE TABLE `matches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `matchstats`
+--  Table structure for `matchstats`
 -- ----------------------------
 DROP TABLE IF EXISTS `matchstats`;
 CREATE TABLE `matchstats` (
@@ -193,7 +195,7 @@ CREATE TABLE `matchstats` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `matchtypes`
+--  Table structure for `matchtypes`
 -- ----------------------------
 DROP TABLE IF EXISTS `matchtypes`;
 CREATE TABLE `matchtypes` (
@@ -205,7 +207,7 @@ CREATE TABLE `matchtypes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `promotions`
+--  Table structure for `promotions`
 -- ----------------------------
 DROP TABLE IF EXISTS `promotions`;
 CREATE TABLE `promotions` (
@@ -216,7 +218,7 @@ CREATE TABLE `promotions` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `seasons`
+--  Table structure for `seasons`
 -- ----------------------------
 DROP TABLE IF EXISTS `seasons`;
 CREATE TABLE `seasons` (
@@ -230,7 +232,7 @@ CREATE TABLE `seasons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `shows`
+--  Table structure for `shows`
 -- ----------------------------
 DROP TABLE IF EXISTS `shows`;
 CREATE TABLE `shows` (
@@ -248,7 +250,7 @@ CREATE TABLE `shows` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `superstars`
+--  Table structure for `superstars`
 -- ----------------------------
 DROP TABLE IF EXISTS `superstars`;
 CREATE TABLE `superstars` (
@@ -278,7 +280,7 @@ CREATE TABLE `superstars` (
 ) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `tiers`
+--  Table structure for `tiers`
 -- ----------------------------
 DROP TABLE IF EXISTS `tiers`;
 CREATE TABLE `tiers` (
@@ -288,7 +290,7 @@ CREATE TABLE `tiers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `users`
+--  Table structure for `users`
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -305,22 +307,22 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Procedure structure for `spGetSeasonsBySuperstarId`
+--  Procedure structure for `spGetSeasonsBySuperstarId`
 -- ----------------------------
 DROP PROCEDURE IF EXISTS `spGetSeasonsBySuperstarId`;
-DELIMITER ;;
+delimiter ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `spGetSeasonsBySuperstarId`(IN superstarId INT)
 BEGIN
   SELECT DISTINCT season FROM matchstats s INNER JOIN matches m ON m.matchId = s.matchId  WHERE s.superstarId = superstarId;
 END
-;;
-DELIMITER ;
+ ;;
+delimiter ;
 
 -- ----------------------------
--- Function structure for `GetCurrentSeason`
+--  Function structure for `GetCurrentSeason`
 -- ----------------------------
 DROP FUNCTION IF EXISTS `GetCurrentSeason`;
-DELIMITER ;;
+delimiter ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetCurrentSeason`() RETURNS int(11)
 BEGIN
   #Routine body goes here...
@@ -330,14 +332,14 @@ BEGIN
   SET season = (SELECT season FROM seasons WHERE startDate <= today AND endDate >= today LIMIT 1);
   RETURN season;
 END
-;;
-DELIMITER ;
+ ;;
+delimiter ;
 
 -- ----------------------------
--- Function structure for `GetPointsBySuperstarIdMatchId`
+--  Function structure for `GetPointsBySuperstarIdMatchId`
 -- ----------------------------
 DROP FUNCTION IF EXISTS `GetPointsBySuperstarIdMatchId`;
-DELIMITER ;;
+delimiter ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetPointsBySuperstarIdMatchId`(`superstarId` int, `matchId` int) RETURNS int(11)
 BEGIN
   DECLARE matchPoints INT DEFAULT 0;
@@ -368,14 +370,14 @@ BEGIN
 
   RETURN (matchPoints + bonusPoints + eventPoints);
 END
-;;
-DELIMITER ;
+ ;;
+delimiter ;
 
 -- ----------------------------
--- Function structure for `GetPointsBySuperstarIdSeason`
+--  Function structure for `GetPointsBySuperstarIdSeason`
 -- ----------------------------
 DROP FUNCTION IF EXISTS `GetPointsBySuperstarIdSeason`;
-DELIMITER ;;
+delimiter ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetPointsBySuperstarIdSeason`(`superstarId` int,`season` int) RETURNS int(11)
 BEGIN
   DECLARE matchPoints INT DEFAULT 0;
@@ -406,14 +408,14 @@ BEGIN
 
   RETURN (matchPoints + bonusPoints + eventPoints);
 END
-;;
-DELIMITER ;
+ ;;
+delimiter ;
 
 -- ----------------------------
--- Function structure for `GetTotalDrawsBySuperstarIdSeason`
+--  Function structure for `GetTotalDrawsBySuperstarIdSeason`
 -- ----------------------------
 DROP FUNCTION IF EXISTS `GetTotalDrawsBySuperstarIdSeason`;
-DELIMITER ;;
+delimiter ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetTotalDrawsBySuperstarIdSeason`(`superstarId` int,`season` int) RETURNS int(11)
 BEGIN
   DECLARE total INT DEFAULT 0;
@@ -425,14 +427,14 @@ BEGIN
 
   RETURN total;
 END
-;;
-DELIMITER ;
+ ;;
+delimiter ;
 
 -- ----------------------------
--- Function structure for `GetTotalLossesBySuperstarIdSeason`
+--  Function structure for `GetTotalLossesBySuperstarIdSeason`
 -- ----------------------------
 DROP FUNCTION IF EXISTS `GetTotalLossesBySuperstarIdSeason`;
-DELIMITER ;;
+delimiter ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetTotalLossesBySuperstarIdSeason`(`superstarId` int,`season` int) RETURNS int(11)
 BEGIN
   #Routine body goes here...
@@ -445,14 +447,14 @@ BEGIN
 
   RETURN total;
 END
-;;
-DELIMITER ;
+ ;;
+delimiter ;
 
 -- ----------------------------
--- Function structure for `GetTotalWinsBySuperstarIdSeason`
+--  Function structure for `GetTotalWinsBySuperstarIdSeason`
 -- ----------------------------
 DROP FUNCTION IF EXISTS `GetTotalWinsBySuperstarIdSeason`;
-DELIMITER ;;
+delimiter ;;
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetTotalWinsBySuperstarIdSeason`(`superstarId` int,`season` int) RETURNS int(11)
 BEGIN
   DECLARE total INT DEFAULT 0;
@@ -464,5 +466,7 @@ BEGIN
 
   RETURN total;
 END
-;;
-DELIMITER ;
+ ;;
+delimiter ;
+
+SET FOREIGN_KEY_CHECKS = 1;

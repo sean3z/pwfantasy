@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
 -- ----------------------------
 -- Records of bonuses
 -- ----------------------------
@@ -292,3 +294,5 @@ INSERT INTO `tiers` VALUES ('12', 'General Manager');
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', 'sean', 'zyos', 'Sean3z', 'seanwragg@gmail.com', '2013-12-28 12:24:25', 'http://www.gravatar.com/avatar/a4b372c704f7c131e636812e746c2f98.jpg?s=45&d=mm', '0', 'fb97001ef554e460fe494d1637702a33');
+
+SET FOREIGN_KEY_CHECKS = 1;
