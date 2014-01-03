@@ -1,19 +1,32 @@
 <?php 
 include 'includes/design/header.php';
-$method = (isset($_GET['method']) && !empty($_GET['method'])) ? $_GET['method'] : 'register';
+$method = (isset($_GET['method']) && !empty($_GET['method'])) ? $_GET['method'] : 'default';
 
+switch ($method) {
+	case 'login':
+		include 'includes/methods/User/login.php';
+	break;
 
-if ($method == 'login'): 
-	include 'includes/methods/User/login.php';
-elseif ($method == 'register'): 
-	include 'includes/methods/User/register.php';
-elseif ($method == 'logout'):
-	user_logout($user); 
-	header('Location: /');
-elseif ($method == 'forgotpass'):
-	include 'includes/methods/User/forgotpass.php';
-elseif ($method == 'settings'):
-	include 'includes/methods/User/settings.php';
-endif;
+	case 'register':
+		include 'includes/methods/User/register.php';
+	break;
+
+	case 'logout':
+		user_logout($user);
+		header('Location: /');
+	break;
+
+	case 'forgotpass':
+		include 'includes/methods/User/forgotpass.php';
+	break;
+
+	case 'settings':
+		include 'includes/methods/User/settings.php';
+	break;
+
+	default:
+		if (user_is_logged_in()) include 'includes/methods/User/settings.php';
+		else include 'includes/methods/User/register.php';
+}
 
 include 'includes/design/footer.php';
