@@ -3,7 +3,7 @@
 if (!empty($_POST)) {
 	if (isset($_POST['username']) && isset($_POST['password']) && user_login($_POST['username'], $_POST['password'])) {
 		if (isset($_POST['remember'])) user_remember($user);
-		$destination = (isset($_GET['destination'])) ? $_GET['destination'] : 'leagues.php?method=myleagues';
+		$destination = (isset($_GET['destination'])) ? $_GET['destination'] : LOGIN_POST_REDIRECT;
 		header('Location: '. $destination);
 	} else {
 		echo '<div class="alert-box alert radius">Incorrect username or password. If you\'ve forgotten your user credentials, please use <a href="?method=forgotpass">Forgot Password</a></div>';

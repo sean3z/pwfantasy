@@ -18,3 +18,4 @@ include 'session.php';
 // define('ASSETS_PATH', '//cdn.pwfantasy.com/');
 define('ASSETS_PATH', '/assets/');
 define('MYSQL_DATETIME', 'Y-m-d H:i:s');
+define('LOGIN_POST_REDIRECT', 'leagues.php?method=myleagues');
