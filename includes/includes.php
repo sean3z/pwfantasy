@@ -11,7 +11,7 @@ if (isset($_GET['destination'])) $_GET['destination'] = urldecode($_GET['destina
 
 include 'database.php';
 
-foreach (glob('includes/applications/*.php') as $file) include $file;
+foreach (glob(pathinfo(__FILE__, PATHINFO_DIRNAME) .'/applications/*.php') as $file) include $file;
 
 include 'session.php';
 
