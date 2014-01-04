@@ -1,5 +1,5 @@
 <?php 
-include 'includes/header.php'; 
+include 'includes/design/header.php'; 
 if (!isset($_GET['season']) || empty($_GET['season'])) $_GET['season'] = 1;
 ?>
 
@@ -26,11 +26,11 @@ if (!isset($_GET['season']) || empty($_GET['season'])) $_GET['season'] = 1;
 						$talent = db_query('SELECT superstarId, superstarName, showId, GetPointsBySuperstarIdSeason(superstarId, GetCurrentSeason()) as points FROM superstars WHERE superstarId = %d', $_GET['superstarId'])->fetch_object();
 
 						echo '<h4>', $talent->superstarName ,' Stats <small>(ID: ', $_GET['superstarId'],')</small></h4>';
-						include 'includes/creatematch.php';
+						include 'includes/methods/Match/creatematch.php';
 						echo '<h4>Season ', $_GET['season'],' Statistics <small>(', $talent->points,' PTS)</small></h4>';
 
 					} else if (isset($_GET['season'])) {
-						include 'includes/creatematch.php';
+						include 'includes/methods/Match/creatematch.php';
 						echo '<h4>Season ', $_GET['season'],' Stats</h4>';
 					}
 
@@ -42,7 +42,7 @@ if (!isset($_GET['season']) || empty($_GET['season'])) $_GET['season'] = 1;
 					echo '<table class="table table-condensed table-striped">
 								<tr><th>#</th><th class="span5">Summary</th><th>Match</th><th class="span2">Show</th><th class="span2">Date</th></tr>';
 						while($m = $query->fetch_object()) {
-							$match = getMatchSummaryByMatchId($m->matchId);
+							$match = MatchApplication::getMatchSummaryByMatchId($m->matchId);
 							//printf('<pre>%s</pre>', print_r($match, 1));
 							echo '<tr class="parent">
 									<td>', $match->summary->matchId,'</td>
@@ -95,4 +95,4 @@ if (!isset($_GET['season']) || empty($_GET['season'])) $_GET['season'] = 1;
 	})(jQuery);
 </script>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/design/footer.php'; ?>

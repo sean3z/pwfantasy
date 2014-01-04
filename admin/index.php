@@ -1,4 +1,4 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/design/header.php'; ?>
 
 <div class="row-fluid">
 	<div class="span12">
@@ -6,4 +6,4 @@
 	</div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include 'includes/design/footer.php'; ?>
