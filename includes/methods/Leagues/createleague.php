@@ -18,6 +18,10 @@ $type = (isset($_GET['type']) ? $_GET['type'] : 'standard');
 	.small-12 {
 		font-size: 90%;
 	}
+
+	input[type="text"] {
+		margin-bottom: 0;
+	}
 </style>
 <h1>Create League</h1>
 <form method="POST" action="">
@@ -51,7 +55,7 @@ $type = (isset($_GET['type']) ? $_GET['type'] : 'standard');
 		</div>
 	</div>
 	<br />
-	<h4>Privacy</h4>
+	<h4>League Access</h4>
 	<div class="section-container">
 		<div class="row">
 			<div class="small-12 medium-3 column">

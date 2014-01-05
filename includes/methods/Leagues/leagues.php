@@ -15,7 +15,7 @@ if (count($leagues) > 0): ?>
 							<td>', $league->type ,'</td>
 							<td>', $league->draftType,'</td>
 							<td>', $league->players,'/', $league->maxPlayers,'</td>
-							<td>', date('D, M d @ g:i A', strtotime($league->created)) ,'</td>
+							<td>', date(SITE_DATETIME, strtotime($league->created)) ,'</td>
 							<td><a class="button tiny" style="margin-bottom: 0;" href="?method=joinleague&leagueId=', $league->leagueId,'">Join League</a></td>
 						</tr>';
 				}
@@ -23,5 +23,5 @@ if (count($leagues) > 0): ?>
 		</tbody>
 	</table>
 <?php else: ?>
-	<p>Woah! There are currently no leagues for this season. Get started now! <a href="?method=create">Create League</a></p>
+	<p>Woah! There are currently no leagues for this season. Get started now!<br /><br /><a href="?method=create" class="button tiny">Create League</a></p>
 <?php endif; ?>
