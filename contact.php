@@ -1,7 +1,7 @@
 <?php include 'includes/design/header.php'; ?>
 
 <h1>Contact</h1>
-<p>We'd love to hear from you. Feel free to send us your comments and concerns. We love getting email! If contact forms aren't your thing, feel free to drop us a line <a href="mailto:staff@pwfantasy.com">staff@pwfantasy.com</a></p>
+<p>We'd love to hear from you.  Feel free to send us your comments and concerns. We love getting email! If contact forms aren't your thing, feel free to drop us a line <a href="mailto:staff@pwfantasy.com">staff@pwfantasy.com</a></p>
 
 <h5>Contact Us</h5>
 <div class="content panel">
