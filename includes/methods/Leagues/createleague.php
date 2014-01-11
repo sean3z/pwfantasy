@@ -1,5 +1,8 @@
 <?php 
 $type = (isset($_GET['type']) ? $_GET['type'] : 'standard');
+if (empty($_POST)) {
+	
+}
 ?>
 <style type="text/css">
 	.odd { 
@@ -32,7 +35,7 @@ $type = (isset($_GET['type']) ? $_GET['type'] : 'standard');
 				<label>League Name</label>
 			</div>
 			<div class="small-12 medium-9 column">
-				<input type="text" placeholder="Ryback Rules!" />
+				<input type="text" placeholder="Ryback Rules!" required />
 			</div>
 		</div>
 
@@ -41,7 +44,7 @@ $type = (isset($_GET['type']) ? $_GET['type'] : 'standard');
 				<label>League Motto</label>
 			</div>
 			<div class="small-12 medium-9 column">
-				<input type="text" placeholder="No one likes a bolly" />
+				<input type="text" placeholder="No one likes a bolly" required />
 			</div>
 		</div>
 

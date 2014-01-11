@@ -10,7 +10,7 @@
 			<li class="divider"></li>
 		</ul>
 		<?php if (!user_is_logged_in()): ?>
-			<a href="user.php?method=register" class="button tiny small-6">Sign Up!</a>
+			<a href="user.php?method=register" class="button tiny small-6">Join today!</a>
 		<?php endif; ?>
 	</div>
 	<script type="text/javascript" src="<?php echo ASSETS_PATH; ?>js/vendor/jquery.js"></script>

@@ -24,6 +24,10 @@ switch ($method) {
 		include 'includes/methods/User/settings.php';
 	break;
 
+	case 'gopro':
+		include 'includes/methods/User/gopro.php';
+	break;
+
 	default:
 		if (user_is_logged_in()) include 'includes/methods/User/settings.php';
 		else include 'includes/methods/User/register.php';
