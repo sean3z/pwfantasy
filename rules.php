@@ -1,48 +1,104 @@
 <?php include 'includes/design/header.php'; ?>
 
-<style type="text/css">
-	div#toc {
-		width: 250px;
-		margin: 0 10px 0 10px;
-		background: ivory;
-		padding: 10px;
-		float: right;
-		border: 1px solid;
-	}
+<dl class="accordion" data-accordion>
+	<dd>
+		<a href="#top">What is PWFA?</a>
+		<div id="top" class="content active">
+The Professional Wrestling Fantasy Alliance (PWFA) is the Internet’s premier sports entertainment fantasy game. Prove you have the greatest mind in the pro wrestling world by choosing the most successful performers and beating your friends each week on your way to winning the world championship!
+		</div>
+	</dd>
+	<dd>
+		<a href="#overview">Overview</a>
+		<p>Playing fantasy wrestling is easy. If you’ve ever played fantasy football or any other fantasy sports game, you already know how it’s done.</p>
+<p>You and your friends can create or join a promotion of up to 8 players. Each player builds a stable of male and female wrestlers and earns points based on the results of televised professional wrestling events. (For now, our game uses only WWE results, but we hope to expand to TNA, ROH, and possibly other offerings in the future.) At the end of a set number of weeks, the season comes to a close, and a champion of your promotion is crowned.</p>
+		<div id="overview" class="content">
+		More content.</div>
+	</dd>
+	<dd>
+		<a href="#stable">Build Your Stable</a>
+The season begins with a draft, where each player in turn selects a wrestler from the pool of remaining options. Each wrestler has been sorted into a specific classification (“Main Event,” “Mid Card,” “Diva,” etc.), and your stable can have a limited number of each type, so choose carefully and plan ahead!
+		<div id="stable" class="content">
+		More content.</div> 
+	</dd>
+		<dd>
+		<a href="#scoring">Scoring</a>
+Once the draft is finished, the competition begins. Whenever a wrestler in your stable wins a match on a televised wrestling card, you will earn points. The exact formula for calculating the points is explained below, but the guiding principle is that the bigger the match -- and the longer the odds -- the more points your wrestler will earn you. The good news is that the points will be calculated automatically for you, so you just need to understand how it works in order to strategize.
+		<div id="scoring" class="content">
+		Points are determined by using a Base Point Value and applying a series of modifiers, where applicable.
 
-	div #toc li {
-		font-size: 70%;
-	}
-</style>
+<p>Base Point Value<br>
+The Base Point Value for a victory is calculated by multiplying the number of competitors in the match by 10, and dividing the result by the number of winners in the match, and again dividing that result by the numbers of winners in the match. In a basic singles match, two competitors wrestle and one is victorious: 2 x 10 = 20 / 1 = 20 / 1 = 20 base points.
+<p>As the number of competitors and winners changes, the Base Point Value may change. For example, in a tag team match, four competitors wrestle and two are victorious: 4 x 10 = 40 / 2 = 20 / 2 = 10 base points for each victorious wrestler.
+<p>In a Triple Threat Match: 3 x 10 = 30 / 1 = 30 / 1 = 30 base points for the winning wrestler.
+<p>Multiple-fall matches, including Two-out-of-Three Fall, Royal Rumble, Elimination Chamber, and Survivor Series matches, are calculated on a different scale (see below).
 
-<div id="rules">
+<p>Decision Multiplier<br>
+The Base Point Value is affected by the victory condition of the match by applying a Decision Multiplier.
+<p>A victory by pinfall, submission, knockout, or referee stoppage is considered a “normal” win; the base point value is unaffected.<br>
+Decision Multiplier = 1.0<br>
+Example: John Cena def. Randy Orton by pinfall; John Cena’s point value so far is 20 points.
 
-<a name="top"></a>
+<p>A victory by countout, disqualification, or forfeit is considered a less worthy win; the base point value is cut in half.<br>
+Decision Multiplier = 0.5<br>
+Example: Randy Orton def. John Cena by countout; Randy Orton’s point value so far is 10 points.
 
-<div id="toc">
-<p></p><h3>Table of contents</h3>
-<ol type="I">
-<li><a href="#organization">Organization</a></li>
-<li><a href="#season">Season</a></li>
-<li><a href="#stables">Stables</a></li>
-<ol type="a"><li><a href="#class">Classification</a></li>
-<li><a href="#draft">Draft</a></li>
-<li><a href="#reclass">Reclassification</a></li>
-<li><a href="#transact">Transactions</a></li>
-<ol type="a"><li><a href="#ufa">Unrestricted free agents</a></li>
-<li><a href="#rfa">Restricted free agents</a></li>
-<li><a href="#trades">Trades</a></li></ol>
-<li><a href="#scoring">Scoring</a></li>
-<ol type="a"><li><a href="#singles">Singles matches</a></li>
-<li><a href="#tag">Tag Team matches</a></li>
-<li><a href="#multiple">Multiple-fall matches</a></li>
-<li><a href="#bonuses">Bonuses</a></li>
-<li><a href="#othscoring">Other scoring rules</a></li></ol>
-<li><a href="#winning">Winning the game</a></li>
-<li><a href="#again">Play it again!</a></li>
-</ol>
-<p></p>
-</ol></div>
+<p>A victory in a match with a special stipulation (i.e. “No Holds Barred,” or “Last Man Standing”) is considered an exceptional win; the base point value is increased by 25%. A battle royal victory is included in this category.<br>
+Decision Multiplier = 1.25<br>
+Example: CM Punk def. Bray Wyatt by fulfilling the stipulation in a Steel Cage Match; CM Punk’s point value so far is 25 points.
+
+<p>The Money in the Bank Ladder Match is is unique; because the match contains many other point multipliers and bonuses, the base point value for the winner of the match is decreased by 25%<br>
+Decision Multiplier: 0.75<br>
+Example: Randy Orton def. Rob Van Dam by grabbing the briefcase in the Money in the Bank Ladder Match; Randy Orton’s point value so far is 15 points.<br>
+Note: Money in the Bank Ladder Matches have never involved fewer than five competitors, so the point total for the winner will be much higher than 15 points. For example, Randy Orton’s 2013 win would have been worth a total of 90 points.
+
+<p>Multiple Fall Matches<br>
+In a match with multiple falls (i.e. Two-out-of-Three Falls, Survivor Series Elimination), a wrestler earns points for each fall he or she scores. After applying the Decisions Modifier to the base point value, the wrestler earns 25% of that value for scoring a fall.<br>
+Decision Multiplier: 0.25<br>
+Example: Cody Rhodes eliminated Dean Ambrose by pinfall in a Survivor Series Elimination match; after applying the Decision Multiplier, Cody Rhodes’ point value so far is 5 points.
+
+<p>Points are awarded for each fall, even if the wrestler does not ultimately win the match. The winner of the match is also awarded points for the match victory, using the Decision Multiplier as outlined in the previous section.<br>
+Example: In a Two-out-of-Three Falls match: Ryback pinned John Cena to score a fall (10 points for Ryback); Ryback was counted out for a fall (5 points for John Cena); John Cena submitted Ryback to score a fall (10 points for John Cena); John Cena def. Ryback in the match (additional 20 points for John Cena, for a total of 35 points for John Cena and 10 points for Ryback)
+
+<p>Pay-Per-View Matches<br>
+Pay-per-view matches are worth double points. After the base point value has been calculated, and the Decision and Multiple Fall modifiers have been applied, the point value is doubled for a pay-per-view victory (i.e. 40 points for a basic singles match on pay-per-view).
+<p>Matches on pay-per-view pre-shows count as regularly televised matches, not pay-per-view matches.
+
+<p>Royal Rumble Match<br>
+The Royal Rumble match is a type of match with its own set of rules.
+<p>The overall winner of the Royal Rumble uses a Base Point Value of 25 points (in practical terms, this is 50 points because it is doubled by virtue of being a pay-per-view match). In the case of a tie, as in the 1994 Royal Rumble, the Base Point Value for the co-winners is half of 25, rounded to the nearest whole number, or 13 points.
+<p>The winner(s) and all other wrestlers competing in the Royal Rumble match can earn additional points. A wrestler earns 10 points for every 10 minutes spent in the match (rounded to the nearest 10; e.g. 6 minutes, 37 seconds is worth 10 points). A wrestler also earns 10 points for every elimination he or she causes, in whole or in part. Note: Time and Elimination points are added after any pay-per-view doubling.
+
+<p>Championships<br>
+Winning a championship brings an additional bonus. This bonus is added after all other modifiers have been applied. The bonuses are:
+<p>+60 points for winning the WWE World Heavyweight Championship<br>
++30 points for winning the Intercontinental Championship, United States Championship, or Divas Championship<br>
++25 points for winning the WWE Tag Team Championship
+<p>Championship bonus points are not awarded for successful title defenses.
+
+<p>Total points<br>
+After all modifiers have been applied to the Base Point Value, the total points for a match are assigned to the appropriate participants in the match. Most of the time, this will be 20 points for a pinfall singles victory or 10 points for a pinfall tag team singles victory, but varying match circumstances can result in any conceivable number of points being awarded. You’re sure to get a feel for the scoring system as the game plays out.
+</div>
+	</dd>
+		<dd>
+		<a href="#transactions">Transactions</a>
+Losing a match doesn’t hurt your point total -- but it doesn’t help either! Throughout the season, players are free to trade wrestlers, drop underperforming ones from their stables, or add free agents to improve their chances.
+		<div id="transactions" class="content">
+		More content.</div>
+	</dd>
+	<dd>
+		<a href="#winning">Winning the Game</a>
+You’ll compete against the other players in your promotion each week, and the player with the highest point total will be awarded a win for that week. At the end of the season, the player with the most weekly wins is crowned the promotion champion!
+		<div id="winning" class="content">
+		More content.</div>
+	</dd>
+	<dd>
+		<a href="#premium">Premium Play</a>
+Joining and playing in the PWFA is completely free, but we offer a premium subscription service to give you access to insider information, an advertisement-free experience, and many other advantages. Being a premium member also makes you eligible to win the biggest prize of all: the PWFA World Championship!
+		<div id="premium" class="content">
+		More content.</div>
+	</dd>
+</dl>
+
 
 <p></p><h1>Fantasy WWE</h1><br>
 <i>For 2-8 players, ages 13 and up</i>
@@ -197,7 +253,7 @@ Upon the conclusion of a Fantasy WWE season, you may choose to keep your promoti
 <p></p><p>[ <a href="#top">back to top</a> ]
 </p><p></p><hr width="300" align="left">
 
-<i>� 2010-2013 MJH Publishing, Inc., Games Division. Rules revised 12/6/13. Fantasy WWE is a registered trademark of MJH Publishing, Inc. All rights reserved. This game is for recreational, non-profit use only. WWE and all associated brands and trademarks are the property of World Wrestling Entertainment, Inc., and no copyright infringement is intended.</i>
+<i>� 2010-2014 MJH Publishing, Inc., Games Division. Rules revised 12/6/13. Fantasy WWE is a registered trademark of MJH Publishing, Inc. All rights reserved. This game is for recreational, non-profit use only. WWE and all associated brands and trademarks are the property of World Wrestling Entertainment, Inc., and no copyright infringement is intended.</i>
 
 </div>
 
