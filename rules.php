@@ -1,34 +1,36 @@
 <?php include 'includes/design/header.php'; ?>
 
+<h1>How to Play the Game</h1>
+<p>Here is a brief overview of how the game works. For more information on any topic, click on its heading.
+
 <dl class="accordion" data-accordion>
 	<dd>
-		<a href="#top">What is PWFA?</a>
+		<a href="#top"><b>What is Pro Wrestling Fantasy&reg;?</b></a>
 		<div id="top" class="content active">
-The Professional Wrestling Fantasy Alliance (PWFA) is the Internet’s premier sports entertainment fantasy game. Prove you have the greatest mind in the pro wrestling world by choosing the most successful performers and beating your friends each week on your way to winning the world championship!
+Pro Wrestling Fantasy&reg; is the Internet’s premier sports entertainment fantasy game. Prove you have the greatest mind in the pro wrestling world by choosing the most successful performers and beating your friends each week on your way to winning the world championship!
 		</div>
 	</dd>
 	<dd>
-		<a href="#overview">Overview</a>
-		<p>Playing fantasy wrestling is easy. If you’ve ever played fantasy football or any other fantasy sports game, you already know how it’s done.</p>
-<p>You and your friends can create or join a promotion of up to 8 players. Each player builds a stable of male and female wrestlers and earns points based on the results of televised professional wrestling events. (For now, our game uses only WWE results, but we hope to expand to TNA, ROH, and possibly other offerings in the future.) At the end of a set number of weeks, the season comes to a close, and a champion of your promotion is crowned.</p>
+		<a href="#overview"><b>Overview</b><br>
+Playing fantasy wrestling is easy. If you’ve ever played fantasy football or any other fantasy sports game, you already know how it’s done. You and your friends can create or join a promotion of up to 8 players. Each player builds a stable of wrestlers and earns points based on the results of televised professional wrestling events. (For now, our game uses only WWE results, but we hope to expand to TNA, ROH, and possibly other offerings in the future.) At the end of a set number of weeks, the season comes to a close, and a champion of your promotion is crowned. <small>(more)</small></a>
 		<div id="overview" class="content">
-		The Professional Wrestling Fantasy Alliance (PWFA) is comprised of individual Promotions of two to eight players. Each player may manage one Stable in a Promotion and is responsible for guiding his or her own Stable to victory. Active participation, trading of performers, and promo-cutting are encouraged.
-<p>The game is administered by the Chairman of the PWFA. Where these rules are insufficient, the Chairman has the authority to issue binding rulings and to declare final decisions on all disputes among players.</p>
+		The Professional Wrestling Fantasy Alliance&#8482; (PWFA&#8482;) is comprised of individual Promotions of two to eight players. Each player may manage one Stable in a Promotion and is responsible for guiding his or her own Stable to victory. Active participation, trading of performers, and promo-cutting are encouraged.
+<p>The game is administered by the Chairman of the PWFA&#8482;. Where these rules are insufficient, the Chairman has the authority to issue binding rulings and to declare final decisions on all disputes among players.</p>
 
 <p><u>Season</u><br>
-Before the Fantasy WWE game begins, the Chairman determines and announces the duration of the season. A season must begin the Monday after a pay-per-view event; a season must end with the conclusion of a pay-per-view event.
+Before the game begins, the Chairman determines and announces the duration of the season. A season must begin the Monday after a pay-per-view event; a season must end with the conclusion of a pay-per-view event.
 <p>The game is scored weekly, with each week of the season running from Monday through the completion of the airing of all original televised sports entertainment programming the following Sunday.
-</div>
+		</div>
 	</dd>
 	<dd>
-		<a href="#stable">Build Your Stable</a>
-The season begins with a draft, where each player in turn selects a wrestler from the pool of remaining options. Each wrestler has been sorted into a specific classification (“Main Event,” “Mid Card,” “Diva,” etc.), and your stable can have a limited number of each type, so choose carefully and plan ahead!
+		<a href="#stable"><b>Build Your Stable</b><br>
+The season begins with a draft, where each player in turn selects a wrestler from the pool of remaining options. Each wrestler has been sorted into a specific classification (“Main Event,” “Mid Card,” “Diva,” etc.), and your stable can have a limited number of each type, so choose carefully and plan ahead! <small>(more)</small></a>
 		<div id="stable" class="content">
 		Each player signs and manages a Stable of nine performers, attempting to anticipate which performers will earn the player the most points each week. Of the Stable's nine performers, seven may earn points for the player in a given week, while the other three await their turn in the Locker Room.
 
 <p><u>Classification</u><br>
 WWE performers compete on four regular weekly television shows (Monday Night RAW, WWE Main Event, Friday Night SmackDown, and WWE Superstars), at pay-per-view events that are held approximately once per month, and infrequently on other special occasions.
-<p>In Fantasy WWE, each individual in-ring male performer ("Superstar") is classified by tier based on whether the superstar is being "booked" in the Main Event (ME), Mid-Card (MC), or Under-Card (UC).
+<p>In the PWFA&#8482;, each individual in-ring male performer ("Superstar") is classified by tier based on whether the superstar is being "booked" in the Main Event (ME), Mid-Card (MC), or Under-Card (UC).
 <p>In-ring female performers ("Divas") are classified simply as Divas (DI).
 <p>Each player decides which of his nine performers to place in seven active slots each week. The slots include: one reserved for performers classified as Main Event (ME), two for those in the Mid-Card (MC), one for those in the Under-Card (UC), one for a Diva (DI), and one slot that is unreserved and can be filled by a performer from any classification (FLEX). The three remaining performers under contract to the player remain in the Locker Room for the week and do not earn any points for the player.
 <p>If a performer is injured, suspended, or otherwise inactive for at least 30 days, he or she will be considered "Inactive" and a corresponding notation will appear next to the performer's name. This designation serves only as a courtesy to the players. All "Inactive" performers are eligible for active and inactive Stable slots; may be signed, released, or traded; and may be drafted (see below).
@@ -40,13 +42,13 @@ Stables are initially stocked via a draft similar to the draft held by most fant
 <p>Performers on the Inactive list are eligible to be drafted.
 
 <p><u>Reclassification</u><br>
-After each pay-per-view event, the Chairman may choose to reclassify Superstars and Divas to reflect the way they are currently being booked (i.e. move a UC superstar up to the MC tier). Without exception, world and women's champions and number-one contenders for those titles will be classified in the Main Event; mid-card champions and number-one contenders for those titles will be classified in the Mid-Card. As a courtesy to the other players, the Chairman should notify the entire PWFA as soon as he or she begins to consider reclassifying performers so players can begin to assess the transactions they may need to make.
+After each pay-per-view event, the Chairman may choose to reclassify Superstars and Divas to reflect the way they are currently being booked (i.e. move a UC superstar up to the MC tier). Without exception, world and women's champions and number-one contenders for those titles will be classified in the Main Event; mid-card champions and number-one contenders for those titles will be classified in the Mid-Card. As a courtesy to the other players, the Chairman should notify the entire PWFA&#8482; as soon as he or she begins to consider reclassifying performers so players can begin to assess the transactions they may need to make.
 <p>The Chairman shall not abuse this power to the benefit or detriment of any player. Reclassifications can be vetoed by a majority vote of all players.
 </div> 
 	</dd>
 		<dd>
-		<a href="#scoring">Scoring</a>
-Once the draft is finished, the competition begins. Whenever a wrestler in your stable wins a match on a televised wrestling card, you will earn points. The exact formula for calculating the points is explained below, but the guiding principle is that the bigger the match -- and the longer the odds -- the more points your wrestler will earn you. The good news is that the points will be calculated automatically for you, so you just need to understand how it works in order to strategize.
+		<a href="#scoring"><b>Scoring</b><br>
+Once the draft is finished, the competition begins. Whenever a wrestler in your stable wins a match on a televised wrestling card, you will earn points. The exact formula for calculating the points is explained below, but the guiding principle is that the bigger the match -- and the longer the odds -- the more points your wrestler will earn you. The good news is that the points will be calculated automatically for you, so you just need to understand how it works in order to strategize. <small>(more)</small></a>
 		<div id="scoring" class="content">
 		Points are determined by using a Base Point Value and applying a series of modifiers, where applicable.
 
@@ -110,8 +112,8 @@ Victories over performers not listed on the official WWE roster (i.e. "local com
 </div>
 	</dd>
 		<dd>
-		<a href="#transactions">Transactions</a>
-Losing a match doesn’t hurt your point total -- but it doesn’t help either! Throughout the season, players are free to trade wrestlers, drop underperforming ones from their stables, or add free agents to improve their chances.
+		<a href="#transactions"><b>Transactions</b><br>
+Losing a match doesn’t hurt your point total -- but it doesn’t help either! Throughout the season, players are free to trade wrestlers, drop underperforming ones from their stables, or add free agents to improve their chances. <small>(more)</small></a>
 		<div id="transactions" class="content">
 		All Stables are locked for the week Monday at 8 p.m. Eastern U.S. time. The Stable in place at that time is the Stable the player must use for the duration of that week.
 <p>Players may drop performers from their Stable, add an unrestricted free agent to their Stable, place a claim on a restricted free agent, or trade performers with another player at any time. However, the results of those transactions are not in effect until the week following the transaction.
@@ -126,30 +128,32 @@ When a performer is dropped from a Stable, the performer becomes a restricted fr
 
 <p><u>Trades</u><br>
 Players may trade performers between and among each other. Keep in mind that when a trade is complete, only one performer may occupy each slot in a player's Stable.
-<p>Trading shall only be done with the intention of improving one's own team. To avoid foul play, the Chairman shall establish a trade deadline several weeks before the end of the season after which no further trades may take place. This is to prevent a player that is out of contention for the Fantasy WWE Championship from intentionally trading valuable performers to bolster another player's chances of victory.
+<p>Trading shall only be done with the intention of improving one's own team. To avoid foul play, the Chairman shall establish a trade deadline several weeks before the end of the season after which no further trades may take place. This is to prevent a player that is out of contention for the promotion’s Championship from intentionally trading valuable performers to bolster another player's chances of victory.
 </div>
 	</dd>
 	<dd>
-		<a href="#winning">Winning the Game</a>
-You’ll compete against the other players in your promotion each week, and the player with the highest point total will be awarded a win for that week. At the end of the season, the player with the most weekly wins is crowned the promotion champion!
+		<a href="#winning"><b>Winning the Game</b><br>
+You’ll compete against the other players in your promotion each week, and the player with the highest point total will be awarded a win for that week. At the end of the season, the player with the most weekly wins is crowned the promotion champion! <small>(more)</small></a>
 		<div id="winning" class="content">
-		At the end of the season, the player with the highest winning percentage is crowned Fantasy WWE Champion.
+		At the end of the season, the player with the highest winning percentage is crowned promotion Champion.
 <p>If more than one player is tied for the highest winning percentage, the player that earned the most overall points throughout the season is awarded the Championship.
 <p>If the players tied for the highest winning percentage also have the same number of overall points, they may fight in a steel cage to determine the Champion, or they may choose to be declared Co-Champions.
 
 <p><u>Play it again!</u><br>
-Upon the conclusion of a Fantasy WWE season, you may choose to keep your promotion active for another season. In subsequent drafts, the first-round-draft selection order corresponds inversely to the previous season's final standings, with the last place team selecting first.<p></p>
+Upon the conclusion of a season, you may choose to keep your promotion active for another season. In subsequent drafts, the first-round-draft selection order corresponds inversely to the previous season's final standings, with the last place team selecting first.<p></p>
 </div>
 	</dd>
 	<dd>
-		<a href="#premium">Premium Play</a>
-Joining and playing in the PWFA is completely free, but we offer a premium subscription service to give you access to insider information, an advertisement-free experience, and many other advantages. Being a premium member also makes you eligible to win the biggest prize of all: the PWFA World Championship!
+		<a href="#premium"><b>Premium Play</b><br>
+Joining and playing Pro Wrestling Fantasy&reg; is completely free, but we offer a premium subscription service to give you access to insider information, an advertisement-free experience, and many other advantages. Being a premium member also makes you eligible to win the biggest prize of all: the PWFA&#8482; World Championship! <small>(more)</small></a>
 		<div id="premium" class="content">
 		More content.</div>
 	</dd>
 </dl>
 
-<p><i>&copy; 2010-2014 MJH Publishing, Inc., Games Division. Rules revised 1/14/14. Fantasy WWE is a registered trademark of MJH Publishing, Inc. All rights reserved. This game is for recreational, non-profit use only. WWE and all associated brands and trademarks are the property of World Wrestling Entertainment, Inc., and no copyright infringement is intended.</i>
+<hr>
+
+<p><i>&copy; 2010-2014 MJH Publishing, Inc., Games Division. Rules revised 1/14/14. Pro Wrestling Fantasy&reg; is a registered trademark of MJH Publishing, Inc. All rights reserved. This game is for recreational, non-profit use only. WWE and all associated brands and trademarks are the property of World Wrestling Entertainment, Inc., and no copyright infringement is intended.</i>
 
 </div>
 
