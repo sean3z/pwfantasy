@@ -155,6 +155,5 @@ Joining and playing Pro Wrestling Fantasy&reg; is completely free, but we offer 
 
 <p><i>&copy; 2010-2014 MJH Publishing, Inc., Games Division. Rules revised 1/14/14. Pro Wrestling Fantasy&reg; is a registered trademark of MJH Publishing, Inc. All rights reserved. This game is for recreational, non-profit use only. WWE and all associated brands and trademarks are the property of World Wrestling Entertainment, Inc., and no copyright infringement is intended.</i>
 
-</div>
 
 <?php include 'includes/design/footer.php'; ?>
