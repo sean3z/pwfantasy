@@ -35,7 +35,7 @@ if (empty($_POST)) {
 				<label>League Name</label>
 			</div>
 			<div class="small-12 medium-9 column">
-				<input type="text" placeholder="Ryback Rules!" required />
+				<input type="text" placeholder="Bryan's League" required />
 			</div>
 		</div>
 
@@ -44,7 +44,7 @@ if (empty($_POST)) {
 				<label>League Motto</label>
 			</div>
 			<div class="small-12 medium-9 column">
-				<input type="text" placeholder="No one likes a bolly" required />
+				<input type="text" placeholder="YES!! YES!! YES!!" required />
 			</div>
 		</div>
 

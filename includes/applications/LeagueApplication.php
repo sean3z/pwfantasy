@@ -4,7 +4,7 @@ class LeagueApplication {
 	static function getLeaguesBySeason($season, $limit = 50) {
 		if ($season < 1) $season = SeasonApplication::getCurrentSeason();
 		$leagues = array();
-		$query = db_query('SELECT * FROM leagues ORDER BY leagueId LIMIT %d', $limit);
+		$query = db_query('SELECT * FROM leagues WHERE season = %d ORDER BY leagueId LIMIT %d', $season, $limit);
 		while($league = $query->fetch_object()) $leagues[] = $league;
 		return $leagues;
 	}

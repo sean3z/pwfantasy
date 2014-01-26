@@ -18,27 +18,27 @@ if (count($_POST) > 0) {
 
 		$participants = array();
 		if ($isDraw <= 0) {
-			foreach($_POST['matchstats_superstar_winners'] as $k => $superstarId) $participants[] = array('superstarId' => $superstarId, 'matchId' => $matchId, 'match_won' => 1);
-			foreach($_POST['matchstats_superstar_losers'] as $k => $superstarId) $participants[] = array('superstarId' => $superstarId, 'matchId' => $matchId, 'match_loss' => 1);
+			foreach($_POST['matchstats_superstar_winners'] as $k => $superstarId) $participants[] = array('superstarId' => $superstarId, 'season' => $season, 'matchId' => $matchId, 'match_won' => 1);
+			foreach($_POST['matchstats_superstar_losers'] as $k => $superstarId) $participants[] = array('superstarId' => $superstarId, 'season' => $season, 'matchId' => $matchId, 'match_loss' => 1);
 		} else {
-			foreach($_POST['matchstats_superstar_participants'] as $k => $superstarId) $participants[] = array('superstarId' => $superstarId, 'matchId' => $matchId, 'match_draw' => 1);
+			foreach($_POST['matchstats_superstar_participants'] as $k => $superstarId) $participants[] = array('superstarId' => $superstarId, 'season' => $season, 'matchId' => $matchId, 'match_draw' => 1);
 		}
 		
 		if ((int)$_POST['matchstats_superstar_guest_referee'] <= 0) {
 			if ((int)$_POST['matchstats_referee'] > 0) {
-				$participants[] = array('superstarId' => $_POST['matchstats_referee'], 'matchId' => $matchId, 'match_referee' => 1);
+				$participants[] = array('superstarId' => $_POST['matchstats_referee'], 'season' => $season, 'matchId' => $matchId, 'match_referee' => 1);
 			}
 		} else {
 			$superstarId = $_POST['matchstats_superstar_guest_referee'];
-			$participants[] = array('superstarId' => $superstarId, 'matchId' => $matchId, 'match_referee' => 1);
+			$participants[] = array('superstarId' => $superstarId, 'season' => $season, 'matchId' => $matchId, 'match_referee' => 1);
 			$event = array('superstarId' => $superstarId, 'eventTypeId' => 4, 'showId' => $_POST['match_showId'], 'matchId' => $matchId, 'date' => $_POST['match_date'] .' 00:00:00');
-			db_insert('events', $event);
+			db_insert('events', $event); 
 		}
 		foreach($participants as $k => $row) db_insert('matchstats', $row);
 
 		if (isset($_POST['matchstats_superstar_interference'])) {
 			$events = array();
-			foreach($_POST['matchstats_superstar_interference'] as $k => $superstarId) $events[] = array('superstarId' => $superstarId, 'eventTypeId' => 1, 'showId' => $_POST['match_showId'], 'matchId' => $matchId, 'date' => $_POST['match_date'] .' 00:00:00');
+			foreach($_POST['matchstats_superstar_interference'] as $k => $superstarId) $events[] = array('superstarId' => $superstarId, 'season' => $season, 'eventTypeId' => 1, 'showId' => $_POST['match_showId'], 'matchId' => $matchId, 'date' => $_POST['match_date'] .' 00:00:00');
 			foreach($events as $k => $row) db_insert('events', $row);
 		}
 
@@ -46,7 +46,7 @@ if (count($_POST) > 0) {
 			$bonus = array();
 			foreach($_POST['bonus_superstar'] as $k => $superstarId) {
 				if ((int)$superstarId > 0) {
-					$bonus[] = array('superstarId' => $superstarId, 'matchId' => $matchId, 'bonusTypeId' => $_POST['bonus_type'][$k]);
+					$bonus[] = array('superstarId' => $superstarId, 'season' => $season, 'matchId' => $matchId, 'bonusTypeId' => $_POST['bonus_type'][$k]);
 				}
 			}
 			foreach($bonus as $k => $row) db_insert('bonuses', $row);
