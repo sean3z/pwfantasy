@@ -5,7 +5,7 @@ session_start();
 $user = new stdClass();
 
 if (isset($_SESSION['user'])) $user = $_SESSION['user'];
-else if (isset($_COOKIE['remember'])) remember_user($user);
+else if (isset($_COOKIE['SESSION'])) remember_user($user);
 
 // printf('<pre>%s</pre>', print_r($user, 1));
 
@@ -34,22 +34,22 @@ function user_register($registrant) {
 function user_logout(&$user) {
 	session_destroy();
 	UserApplication::updateUserSession($user->userId, NULL);
-	unset($_SESSION['user'], $user, $_COOKIE['remember']);
-	setcookie('remember', NULL, time() - 3600);
+	unset($_SESSION['user'], $user, $_COOKIE['SESSION']);
+	setcookie('SESSION', NULL, time() - 3600);
 }
 
 function user_remember(&$user) {
 	$hash = md5(sha1(time() . rand(1, 500)));
-	setcookie('remember', $hash, time() + 31536000, '/');
-	$_COOKIE['remember'] = $hash;
+	setcookie('SESSION', $hash, time() + 31536000, '/');
+	$_COOKIE['SESSION'] = $hash;
 	UserApplication::updateUserSession($user->userId, $hash);
 }
 
 function remember_user(&$user) {
-	$query = db_query('SELECT userId FROM users WHERE session = "%s"', $_COOKIE['remember'])->fetch_object();
+	$query = db_query('SELECT userId FROM users WHERE session = "%s"', $_COOKIE['SESSION'])->fetch_object();
 	if (isset($query->userId)) {
 		$user = $_SESSION['user'] = UserApplication::getUserByUserId($query->userId);
-		setcookie('remember', $query->session, time() + 31536000, '/');
+		setcookie('SESSION', $query->session, time() + 31536000, '/');
 	}
 }
 
