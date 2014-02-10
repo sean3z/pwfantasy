@@ -1,3 +1,62 @@
+/***
+* Foundation resets
+*/
+
 .row {
 	max-width: 80rem;
 }
+
+body, th, td {
+	font-size: 90% !important;
+}
+
+td {
+	line-height: normal !important;
+}
+
+td > small {
+	font-size: 80%;
+}
+
+table {
+	margin-bottom: 0;
+}
+
+/***
+*  Round Column
+*/
+#draft-clock h1 {
+	text-align: center;
+}
+
+.round-heading {
+	padding: 3px;
+	line-height: 16px;
+	background-color: #e2e2e2;
+}
+
+/***
+*  Draft column
+*/
+
+#superstar-information {
+	height: 150px;
+}
+
+#draft-rounds ul {
+	list-style-type: none;
+}
+
+#draftables {
+	max-height: 380px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+#draft-control {
+	margin-top: 5px;
+}
+
+/***
+*  Queue column
+*/
