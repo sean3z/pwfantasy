@@ -6,250 +6,250 @@ function c(a){
 }
 
 Date.strtotime = function(text, now) {
-  //  discuss at: http://phpjs.org/functions/strtotime/
-  //     version: 1109.2016
-  // original by: Caio Ariede (http://caioariede.com)
-  //        note: Examples all have a fixed timestamp to prevent tests to fail because of variable time(zones)
-  //   example 1: strtotime('+1 day', 1129633200);
-  //   returns 1: 1129719600
-  //   example 2: strtotime('+1 week 2 days 4 hours 2 seconds', 1129633200);
-  //   returns 2: 1130425202
-  //   example 3: strtotime('last month', 1129633200);
-  //   returns 3: 1127041200
-  //   example 4: strtotime('2009-05-04 08:30:00 GMT');
-  //   returns 4: 1241425800
+	//  discuss at: http://phpjs.org/functions/strtotime/
+	//     version: 1109.2016
+	// original by: Caio Ariede (http://caioariede.com)
+	//        note: Examples all have a fixed timestamp to prevent tests to fail because of variable time(zones)
+	//   example 1: strtotime('+1 day', 1129633200);
+	//   returns 1: 1129719600
+	//   example 2: strtotime('+1 week 2 days 4 hours 2 seconds', 1129633200);
+	//   returns 2: 1130425202
+	//   example 3: strtotime('last month', 1129633200);
+	//   returns 3: 1127041200
+	//   example 4: strtotime('2009-05-04 08:30:00 GMT');
+	//   returns 4: 1241425800
 
-  var parsed, match, today, year, date, days, ranges, len, times, regex, i, fail = false;
+	var parsed, match, today, year, date, days, ranges, len, times, regex, i, fail = false;
 
-  if (!text) {
-    return fail;
-  }
+	if (!text) {
+		return fail;
+	}
 
-  // Unecessary spaces
-  text = text.replace(/^\s+|\s+$/g, '')
-    .replace(/\s{2,}/g, ' ')
-    .replace(/[\t\r\n]/g, '')
-    .toLowerCase();
+	// Unecessary spaces
+	text = text.replace(/^\s+|\s+$/g, '')
+		.replace(/\s{2,}/g, ' ')
+		.replace(/[\t\r\n]/g, '')
+		.toLowerCase();
 
-  // in contrast to php, js Date.parse function interprets:
-  // dates given as yyyy-mm-dd as in timezone: UTC,
-  // dates with "." or "-" as MDY instead of DMY
-  // dates with two-digit years differently
-  // etc...etc...
-  // ...therefore we manually parse lots of common date formats
-  match = text.match(
-    /^(\d{1,4})([\-\.\/\:])(\d{1,2})([\-\.\/\:])(\d{1,4})(?:\s(\d{1,2}):(\d{2})?:?(\d{2})?)?(?:\s([A-Z]+)?)?$/);
+	// in contrast to php, js Date.parse function interprets:
+	// dates given as yyyy-mm-dd as in timezone: UTC,
+	// dates with "." or "-" as MDY instead of DMY
+	// dates with two-digit years differently
+	// etc...etc...
+	// ...therefore we manually parse lots of common date formats
+	match = text.match(
+		/^(\d{1,4})([\-\.\/\:])(\d{1,2})([\-\.\/\:])(\d{1,4})(?:\s(\d{1,2}):(\d{2})?:?(\d{2})?)?(?:\s([A-Z]+)?)?$/);
 
-  if (match && match[2] === match[4]) {
-    if (match[1] > 1901) {
-      switch (match[2]) {
-        case '-':
-          { // YYYY-M-D
-            if (match[3] > 12 || match[5] > 31) {
-              return fail;
-            }
+	if (match && match[2] === match[4]) {
+		if (match[1] > 1901) {
+			switch (match[2]) {
+				case '-':
+					{ // YYYY-M-D
+						if (match[3] > 12 || match[5] > 31) {
+							return fail;
+						}
 
-            return new Date(match[1], parseInt(match[3], 10) - 1, match[5],
-              match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-          }
-        case '.':
-          { // YYYY.M.D is not parsed by strtotime()
-            return fail;
-          }
-        case '/':
-          { // YYYY/M/D
-            if (match[3] > 12 || match[5] > 31) {
-              return fail;
-            }
+						return new Date(match[1], parseInt(match[3], 10) - 1, match[5],
+							match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+					}
+				case '.':
+					{ // YYYY.M.D is not parsed by strtotime()
+						return fail;
+					}
+				case '/':
+					{ // YYYY/M/D
+						if (match[3] > 12 || match[5] > 31) {
+							return fail;
+						}
 
-            return new Date(match[1], parseInt(match[3], 10) - 1, match[5],
-              match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-          }
-      }
-    } else if (match[5] > 1901) {
-      switch (match[2]) {
-        case '-':
-          { // D-M-YYYY
-            if (match[3] > 12 || match[1] > 31) {
-              return fail;
-            }
+						return new Date(match[1], parseInt(match[3], 10) - 1, match[5],
+							match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+					}
+			}
+		} else if (match[5] > 1901) {
+			switch (match[2]) {
+				case '-':
+					{ // D-M-YYYY
+						if (match[3] > 12 || match[1] > 31) {
+							return fail;
+						}
 
-            return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
-              match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-          }
-        case '.':
-          { // D.M.YYYY
-            if (match[3] > 12 || match[1] > 31) {
-              return fail;
-            }
+						return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
+							match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+					}
+				case '.':
+					{ // D.M.YYYY
+						if (match[3] > 12 || match[1] > 31) {
+							return fail;
+						}
 
-            return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
-              match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-          }
-        case '/':
-          { // M/D/YYYY
-            if (match[1] > 12 || match[3] > 31) {
-              return fail;
-            }
+						return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
+							match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+					}
+				case '/':
+					{ // M/D/YYYY
+						if (match[1] > 12 || match[3] > 31) {
+							return fail;
+						}
 
-            return new Date(match[5], parseInt(match[1], 10) - 1, match[3],
-              match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-          }
-      }
-    } else {
-      switch (match[2]) {
-        case '-':
-          { // YY-M-D
-            if (match[3] > 12 || match[5] > 31 || (match[1] < 70 && match[1] > 38)) {
-              return fail;
-            }
+						return new Date(match[5], parseInt(match[1], 10) - 1, match[3],
+							match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+					}
+			}
+		} else {
+			switch (match[2]) {
+				case '-':
+					{ // YY-M-D
+						if (match[3] > 12 || match[5] > 31 || (match[1] < 70 && match[1] > 38)) {
+							return fail;
+						}
 
-            year = match[1] >= 0 && match[1] <= 38 ? +match[1] + 2000 : match[1];
-            return new Date(year, parseInt(match[3], 10) - 1, match[5],
-              match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-          }
-        case '.':
-          { // D.M.YY or H.MM.SS
-            if (match[5] >= 70) { // D.M.YY
-              if (match[3] > 12 || match[1] > 31) {
-                return fail;
-              }
+						year = match[1] >= 0 && match[1] <= 38 ? +match[1] + 2000 : match[1];
+						return new Date(year, parseInt(match[3], 10) - 1, match[5],
+							match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+					}
+				case '.':
+					{ // D.M.YY or H.MM.SS
+						if (match[5] >= 70) { // D.M.YY
+							if (match[3] > 12 || match[1] > 31) {
+								return fail;
+							}
 
-              return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
-                match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-            }
-            if (match[5] < 60 && !match[6]) { // H.MM.SS
-              if (match[1] > 23 || match[3] > 59) {
-                return fail;
-              }
+							return new Date(match[5], parseInt(match[3], 10) - 1, match[1],
+								match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+						}
+						if (match[5] < 60 && !match[6]) { // H.MM.SS
+							if (match[1] > 23 || match[3] > 59) {
+								return fail;
+							}
 
-              today = new Date();
-              return new Date(today.getFullYear(), today.getMonth(), today.getDate(),
-                match[1] || 0, match[3] || 0, match[5] || 0, match[9] || 0) / 1000;
-            }
+							today = new Date();
+							return new Date(today.getFullYear(), today.getMonth(), today.getDate(),
+								match[1] || 0, match[3] || 0, match[5] || 0, match[9] || 0) / 1000;
+						}
 
-            return fail; // invalid format, cannot be parsed
-          }
-        case '/':
-          { // M/D/YY
-            if (match[1] > 12 || match[3] > 31 || (match[5] < 70 && match[5] > 38)) {
-              return fail;
-            }
+						return fail; // invalid format, cannot be parsed
+					}
+				case '/':
+					{ // M/D/YY
+						if (match[1] > 12 || match[3] > 31 || (match[5] < 70 && match[5] > 38)) {
+							return fail;
+						}
 
-            year = match[5] >= 0 && match[5] <= 38 ? +match[5] + 2000 : match[5];
-            return new Date(year, parseInt(match[1], 10) - 1, match[3],
-              match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
-          }
-        case ':':
-          { // HH:MM:SS
-            if (match[1] > 23 || match[3] > 59 || match[5] > 59) {
-              return fail;
-            }
+						year = match[5] >= 0 && match[5] <= 38 ? +match[5] + 2000 : match[5];
+						return new Date(year, parseInt(match[1], 10) - 1, match[3],
+							match[6] || 0, match[7] || 0, match[8] || 0, match[9] || 0) / 1000;
+					}
+				case ':':
+					{ // HH:MM:SS
+						if (match[1] > 23 || match[3] > 59 || match[5] > 59) {
+							return fail;
+						}
 
-            today = new Date();
-            return new Date(today.getFullYear(), today.getMonth(), today.getDate(),
-              match[1] || 0, match[3] || 0, match[5] || 0) / 1000;
-          }
-      }
-    }
-  }
+						today = new Date();
+						return new Date(today.getFullYear(), today.getMonth(), today.getDate(),
+							match[1] || 0, match[3] || 0, match[5] || 0) / 1000;
+					}
+			}
+		}
+	}
 
-  // other formats and "now" should be parsed by Date.parse()
-  if (text === 'now') {
-    return now === null || isNaN(now) ? new Date()
-      .getTime() / 1000 | 0 : now | 0;
-  }
-  if (!isNaN(parsed = Date.parse(text))) {
-    return parsed / 1000 | 0;
-  }
+	// other formats and "now" should be parsed by Date.parse()
+	if (text === 'now') {
+		return now === null || isNaN(now) ? new Date()
+			.getTime() / 1000 | 0 : now | 0;
+	}
+	if (!isNaN(parsed = Date.parse(text))) {
+		return parsed / 1000 | 0;
+	}
 
-  date = now ? new Date(now * 1000) : new Date();
-  days = {
-    'sun': 0,
-    'mon': 1,
-    'tue': 2,
-    'wed': 3,
-    'thu': 4,
-    'fri': 5,
-    'sat': 6
-  };
-  ranges = {
-    'yea': 'FullYear',
-    'mon': 'Month',
-    'day': 'Date',
-    'hou': 'Hours',
-    'min': 'Minutes',
-    'sec': 'Seconds'
-  };
+	date = now ? new Date(now * 1000) : new Date();
+	days = {
+		'sun': 0,
+		'mon': 1,
+		'tue': 2,
+		'wed': 3,
+		'thu': 4,
+		'fri': 5,
+		'sat': 6
+	};
+	ranges = {
+		'yea': 'FullYear',
+		'mon': 'Month',
+		'day': 'Date',
+		'hou': 'Hours',
+		'min': 'Minutes',
+		'sec': 'Seconds'
+	};
 
-  function lastNext(type, range, modifier) {
-    var diff, day = days[range];
+	function lastNext(type, range, modifier) {
+		var diff, day = days[range];
 
-    if (typeof day !== 'undefined') {
-      diff = day - date.getDay();
+		if (typeof day !== 'undefined') {
+			diff = day - date.getDay();
 
-      if (diff === 0) {
-        diff = 7 * modifier;
-      } else if (diff > 0 && type === 'last') {
-        diff -= 7;
-      } else if (diff < 0 && type === 'next') {
-        diff += 7;
-      }
+			if (diff === 0) {
+				diff = 7 * modifier;
+			} else if (diff > 0 && type === 'last') {
+				diff -= 7;
+			} else if (diff < 0 && type === 'next') {
+				diff += 7;
+			}
 
-      date.setDate(date.getDate() + diff);
-    }
-  }
+			date.setDate(date.getDate() + diff);
+		}
+	}
 
-  function process(val) {
-    var splt = val.split(' '), // Todo: Reconcile this with regex using \s, taking into account browser issues with split and regexes
-      type = splt[0],
-      range = splt[1].substring(0, 3),
-      typeIsNumber = /\d+/.test(type),
-      ago = splt[2] === 'ago',
-      num = (type === 'last' ? -1 : 1) * (ago ? -1 : 1);
+	function process(val) {
+		var splt = val.split(' '), // Todo: Reconcile this with regex using \s, taking into account browser issues with split and regexes
+			type = splt[0],
+			range = splt[1].substring(0, 3),
+			typeIsNumber = /\d+/.test(type),
+			ago = splt[2] === 'ago',
+			num = (type === 'last' ? -1 : 1) * (ago ? -1 : 1);
 
-    if (typeIsNumber) {
-      num *= parseInt(type, 10);
-    }
+		if (typeIsNumber) {
+			num *= parseInt(type, 10);
+		}
 
-    if (ranges.hasOwnProperty(range) && !splt[1].match(/^mon(day|\.)?$/i)) {
-      return date['set' + ranges[range]](date['get' + ranges[range]]() + num);
-    }
+		if (ranges.hasOwnProperty(range) && !splt[1].match(/^mon(day|\.)?$/i)) {
+			return date['set' + ranges[range]](date['get' + ranges[range]]() + num);
+		}
 
-    if (range === 'wee') {
-      return date.setDate(date.getDate() + (num * 7));
-    }
+		if (range === 'wee') {
+			return date.setDate(date.getDate() + (num * 7));
+		}
 
-    if (type === 'next' || type === 'last') {
-      lastNext(type, range, num);
-    } else if (!typeIsNumber) {
-      return false;
-    }
+		if (type === 'next' || type === 'last') {
+			lastNext(type, range, num);
+		} else if (!typeIsNumber) {
+			return false;
+		}
 
-    return true;
-  }
+		return true;
+	}
 
-  times = '(years?|months?|weeks?|days?|hours?|minutes?|min|seconds?|sec' +
-    '|sunday|sun\\.?|monday|mon\\.?|tuesday|tue\\.?|wednesday|wed\\.?' +
-    '|thursday|thu\\.?|friday|fri\\.?|saturday|sat\\.?)';
-  regex = '([+-]?\\d+\\s' + times + '|' + '(last|next)\\s' + times + ')(\\sago)?';
+	times = '(years?|months?|weeks?|days?|hours?|minutes?|min|seconds?|sec' +
+		'|sunday|sun\\.?|monday|mon\\.?|tuesday|tue\\.?|wednesday|wed\\.?' +
+		'|thursday|thu\\.?|friday|fri\\.?|saturday|sat\\.?)';
+	regex = '([+-]?\\d+\\s' + times + '|' + '(last|next)\\s' + times + ')(\\sago)?';
 
-  match = text.match(new RegExp(regex, 'gi'));
-  if (!match) {
-    return fail;
-  }
+	match = text.match(new RegExp(regex, 'gi'));
+	if (!match) {
+		return fail;
+	}
 
-  for (i = 0, len = match.length; i < len; i++) {
-    if (!process(match[i])) {
-      return fail;
-    }
-  }
+	for (i = 0, len = match.length; i < len; i++) {
+		if (!process(match[i])) {
+			return fail;
+		}
+	}
 
-  // ECMAScript 5 only
-  // if (!match.every(process))
-  //    return false;
+	// ECMAScript 5 only
+	// if (!match.every(process))
+	//    return false;
 
-  return (date.getTime() / 1000);
+	return (date.getTime() / 1000);
 }
 
 Date.dateDiff = function(d1, d2) {
@@ -276,13 +276,14 @@ Date.dateDiff = function(d1, d2) {
 	return diffs;
 };
 
-function User(sessionId) {
+function User(leagueId, sessionId) {
 	this.userId = 0;
 	this.username = null;
 	this.sessionId = sessionId;
 	this.avatar = null;
 	this.membership = 0;
 	this.queue = [];
+	this.leagueId = leagueId;
 
 	this.__construct = function(sessionId) {
 		this.getUserBySessionId();
@@ -290,7 +291,7 @@ function User(sessionId) {
 
 	this.getUserBySessionId = function() {
 		$.ajax({
-			url: '/user/getUserBySessionId/'+ this.sessionId,
+			url: '/user/getUserBySessionId/'+ this.leagueId +'/'+ this.sessionId,
 			async: false,
 			context: this,
 			success: this.updateUserInfo
@@ -317,10 +318,11 @@ function User(sessionId) {
 }
 
 var Draft = {
-	init: function(leagueId) {
-		var info = this.getDraftInformationByLeagueId(leagueId);
+	init: function(leagueId, sessionId) {
+		var info = this.getDraftInformationByLeagueId(leagueId, sessionId);
 		if (typeof info.error == 'undefined') {
 			if (this.isParticipant(info.players) && !info.isComplete) {
+				this.buildRounds(info.rounds);
 				var countdown = Date.dateDiff(new Date(), new Date(info.draftTime));
 				if (countdown.minute > 0 || countdown.second > 0) {
 					// initiate countdown
@@ -329,12 +331,12 @@ var Draft = {
 					// this.draftStart();
 				} else {
 					// draft has already started
-					this.getDraftableSuperstars();
+					this.getDraftableSuperstars(leagueId);
 					$('#pre-draft, #draft-content').toggle();
 					// get draft status - setInterval() every 2seconds, pull draft 
 					setInterval(function() {
 						Draft.getDraftStatusByLeagueId(leagueId)
-					}, 3000);
+					}, 1500);
 				}
 			} else {
 				// not a participant
@@ -343,10 +345,10 @@ var Draft = {
 		}
 	},
 
-	getDraftInformationByLeagueId: function(leagueId) {
+	getDraftInformationByLeagueId: function(leagueId, sessionId) {
 		return $.parseJSON(
 			$.ajax({
-				url: '/draft/getDraftInformationByLeagueId/'+ leagueId,
+				url: '/draft/getDraftInformationByLeagueId/'+ leagueId +'/'+ sessionId,
 				async: false,
 				dataType: 'json',
 			}).responseText
@@ -361,9 +363,9 @@ var Draft = {
 		});
 	},
 
-	getDraftableSuperstars: function() {
+	getDraftableSuperstars: function(leagueId) {
 		$.ajax({
-			url: '/draft/getDraftableSuperstars',
+			url: '/draft/getDraftableSuperstars/'+ leagueId,
 			dataType: 'json',
 			success: this.initiateDraftables
 		});
@@ -387,25 +389,64 @@ var Draft = {
 		}
 	},
 
+	buildRounds: function(rounds) {
+		if (typeof rounds != 'undefined') {
+			var $ul = $('#draft-rounds ul');
+			for (var i = 0; i <= rounds.length - 1; i++) {
+				var r = i + 1;
+				$ul.append('<li class="round-heading round-'+ r +'">Round '+ r +'</li>');
+				var round = rounds[i];
+				for (position in round) {
+					var p = parseInt(position) + 1;
+					$ul.append('<li class="round-player position-'+ p +' user-'+ round[position] +' not-filled">'+ p +'</li>');
+				}
+			}
+		}
+	},
+
 	incomingStatus: function(status) {
 		// essentially the controller for visiual events on the page
 		// console.log(status);
+		if ($('#draft-rounds ul li.not-filled').length > 0) {
+			$(window).trigger('rounds_userPlacement', [status.users]);
+		}
+
+		$(window).trigger('rounds_onTheClock', [status.turn]);
 	}
 }
 
 function stageLeft() {
-	alert('exit stage left');
+	alert('exit stage left'); // redriect to :80/login.php?destination=draft
 	// window.location = window.location.hostname;
 }
 
+
 // calculate sessionId
-var sessionId = c('SESSION').length > 0 ? c('SESSION') : c('PHPSESSID');
+var sessionId = c('SESSION').length > 0 ? c('SESSION')[0] : c('PHPSESSID')[0];
 var leagueId  = 1;
 
-if (typeof sessionId[0] != 'undefined' && sessionId[0].length > 0) {
-	var user = new User(sessionId[0]);
-	Draft.init(leagueId);
+if (typeof sessionId != 'undefined' && sessionId.length > 0) {
+	var user = new User(leagueId, sessionId);
+	Draft.init(leagueId, sessionId);
 } else {
 	// redirect to login; no session found
 	stageLeft();
 }
+
+
+// SCREEN WIDTH: 1025px;
+// window.resizeTo(1025, 580);
+
+$(window).on('rounds_userPlacement', function(event, users) {
+	var $li = $('#draft-rounds ul');
+	for (userId in users) {
+		$.each($li.find('.not-filled.user-'+ userId), function(i, element) {
+			var $this = $(element), u = users[userId];
+			$this.removeClass('not-filled').append(u.username);
+		});
+	}
+});
+
+$(window).on('rounds_onTheClock', function(event, turn) {
+	console.log(turn);
+});

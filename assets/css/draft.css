@@ -22,6 +22,14 @@ table {
 	margin-bottom: 0;
 }
 
+#draft-content {
+	max-height: 560px;
+	min-height: 560px;
+	overflow: hidden;
+	min-width: 1025px;
+	max-width: 1025px;
+}
+
 /***
 *  Round Column
 */
@@ -33,6 +41,7 @@ table {
 	padding: 3px;
 	line-height: 16px;
 	background-color: #e2e2e2;
+	width: 220px;
 }
 
 /***
